@@ -3,8 +3,7 @@ import {
     JsonSchemaReducerParams,
     JsonSchemaValidatorParams,
     ValidationPath,
-    ValidationReturnType,
-    ValidationAnnotation
+    ValidationReturnType
 } from "../Keyword";
 import { isBooleanSchema, isSchemaNode, SchemaNode } from "../types";
 import settings from "../settings";

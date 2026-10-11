@@ -2,9 +2,9 @@
 import readline from "readline/promises";
 import process from "node:process";
 import os from "os";
-import packageJson from "json-schema-library/package.json";
-import { compileSchema, type SchemaNode } from "json-schema-library";
-import { remotes } from "json-schema-library/remotes";
+import packageJson from "@texaryn/json-schema-library/package.json";
+import { compileSchema, type SchemaNode } from "@texaryn/json-schema-library";
+import { remotes } from "@texaryn/json-schema-library/remotes";
 import {
     createBowtieError,
     type Command,
@@ -32,11 +32,11 @@ const cmds: CommandMap = {
             version: 1,
             implementation: {
                 language: "typescript",
-                name: "json-schema-library",
+                name: "@texaryn/json-schema-library",
                 version: packageJson.version,
-                homepage: "https://github.com/sagold/json-schema-library",
-                issues: "https://github.com/sagold/json-schema-library/issues",
-                source: "https://github.com/sagold/json-schema-library",
+                homepage: "https://github.com/texaryn/json-schema-library",
+                issues: "https://github.com/texaryn/json-schema-library/issues",
+                source: "https://github.com/texaryn/json-schema-library",
 
                 dialects: [
                     "https://json-schema.org/draft/2020-12/schema",
@@ -75,7 +75,8 @@ const cmds: CommandMap = {
             try {
                 return { valid: node.validate(test.instance).valid };
             } catch (e) {
-                return createBowtieError(e.message ?? e, e.stack);
+                const error = e instanceof Error ? e : new Error(String(e));
+                return createBowtieError(error.message, error.stack);
             }
         });
         // response to bowtie for run command

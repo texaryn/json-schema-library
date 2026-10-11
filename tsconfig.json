@@ -12,10 +12,10 @@
         "exactOptionalPropertyTypes": true,
         "baseUrl": ".",
         "paths": {
-            "json-schema-library": ["./index.ts"],
-            "json-schema-library/formats": ["./src/formats/additionalFormats.ts"],
-            "json-schema-library/remotes": ["./remotes/index.ts"],
-            "json-schema-library/package.json": ["./package.json"]
+            "@texaryn/json-schema-library": ["./index.ts"],
+            "@texaryn/json-schema-library/formats": ["./src/formats/additionalFormats.ts"],
+            "@texaryn/json-schema-library/remotes": ["./remotes/index.ts"],
+            "@texaryn/json-schema-library/package.json": ["./package.json"]
         },
         "types": ["node", "mocha"]
     },

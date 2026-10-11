@@ -1,5 +1,10 @@
 ## Changelog
 
+### 11.6.6
+
+Keeps transient reductions out of authored reference registries. Propagates
+failed nested `oneOf` reductions through dependent schemas.
+
 ### 11.6.2
 
 - fixed: ipv4 reject leading-zero octets, not addresses starting with 0 (#113)
@@ -34,8 +39,8 @@
 _Use the following to add the additional format validators to drafts per default:_
 
 ```ts
-import { addFormats } from "json-schema-library/formats";
-import { draft04, draft06, draft07, draft2019, draft2020 } from "json-schema-library";
+import { addFormats } from "@texaryn/json-schema-library/formats";
+import { draft04, draft06, draft07, draft2019, draft2020 } from "@texaryn/json-schema-library";
 // add additional formats to the following drafts
 addFormats([draft04, draft06, draft07, draft2019, draft2020]);
 ```

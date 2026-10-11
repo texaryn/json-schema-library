@@ -1,6 +1,8 @@
-import { A as JsonSchemaResolver, C as DraftVersion, D as DataNode, E as TemplateOptions, F as Maybe, I as ValidationAnnotation, L as ValidationPath, M as JsonSchemaValidator, N as JsonSchemaValidatorParams, O as JsonSchemaReducer, P as Keyword, R as ValidationReturnType, S as Draft, T as extendDraft, _ as GetNodeOptions, a as JsonAnnotation, b as isReduceable, c as JsonSchema, d as isAnnotation, f as isBooleanSchema, g as Context, h as isJsonSchema, i as ErrorConfig, j as JsonSchemaResolverParams, k as JsonSchemaReducerParams, l as NodeOrError, m as isJsonError, n as AnnotationData, o as JsonError, p as isJsonAnnotation, r as BooleanSchema, s as JsonPointer, t as Annotation, u as OptionalNodeOrError, v as SchemaNode, w as addKeywords, x as isSchemaNode, y as ValidateReturnType } from "./types-0Orw2kYf.cjs";
+import { A as JsonSchemaResolver, C as DraftVersion, D as DataNode, E as TemplateOptions, F as Maybe, I as ValidationAnnotation, L as ValidationPath, M as JsonSchemaValidator, N as JsonSchemaValidatorParams, O as JsonSchemaReducer, P as Keyword, R as ValidationReturnType, S as Draft, T as extendDraft, _ as GetNodeOptions, a as JsonAnnotation, b as isReduceable, c as JsonSchema, d as isAnnotation, f as isBooleanSchema, g as Context, h as isJsonSchema, i as ErrorConfig, j as JsonSchemaResolverParams, k as JsonSchemaReducerParams, l as NodeOrError, m as isJsonError, n as AnnotationData, o as JsonError, p as isJsonAnnotation, r as BooleanSchema, s as JsonPointer, t as Annotation, u as OptionalNodeOrError, v as SchemaNode, w as addKeywords, x as isSchemaNode, y as ValidateReturnType } from "./types-BDAZnka4.cjs";
 //#region src/compileSchema.d.ts
 type CompileOptions = {
+  /** Retrieval URI of the root document, before resolving its id/$id keyword. */
+  baseUri?: string | undefined;
   /**
    * List of drafts to support.
    *
@@ -11,7 +13,7 @@ type CompileOptions = {
    * @default [draft04, draft06, draft07, draft2019, draft2020]
    *
    * @example
-   * import { draft04, draft07, draft2020 } from "json-schema-library"
+   * import { draft04, draft07, draft2020 } from "@texaryn/json-schema-library"
    * compileSchema({ $schema: "draft-04" }, { drafts: [draft04, draft07, draft2020] })
    */
   drafts?: Draft[];
@@ -43,7 +45,7 @@ type CompileOptions = {
    */
   remote?: SchemaNode & {
     schemaErrors?: JsonError[];
-    schemaAnnotations: JsonAnnotation[];
+    schemaAnnotations?: JsonAnnotation[];
   };
   /**
    * a list of remotes to add, requires a unique $id for each schema. Will be ignored if `remote` is set

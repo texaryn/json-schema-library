@@ -38,7 +38,7 @@ export type CompileOptions = {
      * @default [draft04, draft06, draft07, draft2019, draft2020]
      *
      * @example
-     * import { draft04, draft07, draft2020 } from "json-schema-library"
+     * import { draft04, draft07, draft2020 } from "@texaryn/json-schema-library"
      * compileSchema({ $schema: "draft-04" }, { drafts: [draft04, draft07, draft2020] })
      */
     drafts?: Draft[];
@@ -69,7 +69,7 @@ export type CompileOptions = {
     /**
      * Set node and its remote schemata as remote schemata for this node and schema to resolve $ref
      */
-    remote?: SchemaNode & { schemaErrors?: JsonError[]; schemaAnnotations: JsonAnnotation[] };
+    remote?: SchemaNode & { schemaErrors?: JsonError[]; schemaAnnotations?: JsonAnnotation[] };
     /**
      * a list of remotes to add, requires a unique $id for each schema. Will be ignored if `remote` is set
      */

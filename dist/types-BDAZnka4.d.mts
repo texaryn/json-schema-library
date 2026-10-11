@@ -24,6 +24,8 @@ type JsonSchemaResolverParams = {
   key: string | number;
   data: unknown;
   node: SchemaNode;
+  pointer?: string;
+  path?: ValidationPath;
 };
 interface JsonSchemaResolver {
   toJSON?: () => string;
@@ -301,7 +303,7 @@ interface SchemaNode extends SchemaNodeMethodsType {
    * - may not have any association to the principal schema
    */
   schemaLocation: string;
-  /** id created when combining subschemas */
+  /** id created when combining or deriving subschemas */
   dynamicId: string;
   /** reference to parent node (node used to compile this node) */
   parent?: SchemaNode | undefined;
@@ -541,4 +543,4 @@ declare function isJsonAnnotation(error: unknown): error is JsonAnnotation;
 declare function isJsonError(error: unknown): error is JsonError;
 //#endregion
 export { JsonSchemaResolver as A, DraftVersion as C, DataNode as D, TemplateOptions as E, Maybe as F, ValidationAnnotation as I, ValidationPath as L, JsonSchemaValidator as M, JsonSchemaValidatorParams as N, JsonSchemaReducer as O, Keyword as P, ValidationReturnType as R, Draft as S, extendDraft as T, GetNodeOptions as _, JsonAnnotation as a, isReduceable as b, JsonSchema as c, isAnnotation as d, isBooleanSchema as f, Context as g, isJsonSchema as h, ErrorConfig as i, JsonSchemaResolverParams as j, JsonSchemaReducerParams as k, NodeOrError as l, isJsonError as m, AnnotationData as n, JsonError as o, isJsonAnnotation as p, BooleanSchema as r, JsonPointer as s, Annotation as t, OptionalNodeOrError as u, SchemaNode as v, addKeywords as w, isSchemaNode as x, ValidateReturnType as y };
-//# sourceMappingURL=types-0Orw2kYf.d.mts.map
+//# sourceMappingURL=types-BDAZnka4.d.mts.map

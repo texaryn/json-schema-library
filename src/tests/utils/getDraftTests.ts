@@ -2,8 +2,8 @@ import { globSync } from "glob";
 import path from "path";
 import fs from "fs";
 import { JsonSchema } from "../../types";
-import { addFormats } from "json-schema-library/formats";
-import { draft04, draft06, draft07, draft2019, draft2020 } from "json-schema-library";
+import { addFormats } from "@texaryn/json-schema-library/formats";
+import { draft04, draft06, draft07, draft2019, draft2020 } from "@texaryn/json-schema-library";
 addFormats([draft04, draft06, draft07, draft2019, draft2020]);
 
 type JsonSchemaTestFileContents = {

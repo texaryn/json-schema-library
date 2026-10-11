@@ -553,7 +553,7 @@ export const SchemaNodeMethods = {
      * @returns the current node (not the remote schema-node)
      */
     addRemoteSchema(url: string, schema: JsonSchema | BooleanSchema): SchemaNode {
-        const node = this as SchemaNode & { schemaErrors?: JsonError[]; schemaAnnotations: JsonAnnotation[] };
+        const node = this as SchemaNode & { schemaErrors?: JsonError[]; schemaAnnotations?: JsonAnnotation[] };
         const { context } = node;
         const schemaId = isJsonSchema(schema) ? (node.context.draft ?? schema.$schema) : undefined;
         const draft = getDraft(context.drafts, schemaId ?? context.rootNode.schema?.$schema);

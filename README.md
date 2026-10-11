@@ -1,7 +1,9 @@
-[![Npm package version](https://badgen.net/npm/v/json-schema-library)](https://www.npmjs.com/package/json-schema-library) [![CI](https://github.com/sagold/json-schema-library/actions/workflows/ci.yaml/badge.svg)](https://github.com/sagold/json-schema-library/actions/workflows/ci.yaml) ![Types](https://badgen.net/npm/types/json-schema-library)
+[![Npm package version](https://badgen.net/npm/v/%40texaryn%2Fjson-schema-library)](https://www.npmjs.com/package/%40texaryn%2Fjson-schema-library) [![CI](https://github.com/texaryn/json-schema-library/actions/workflows/ci.yaml/badge.svg)](https://github.com/texaryn/json-schema-library/actions/workflows/ci.yaml) ![Types](https://badgen.net/npm/types/%40texaryn%2Fjson-schema-library)
+
+This Texaryn maintained fork follows [sagold/json-schema-library](https://github.com/sagold/json-schema-library) and keeps its MIT license and API.
 
 <h1 align="center">
-    <img src="./docs/json-schema-library-10.png" width="192" alt="json-schema-library">
+    <img src="./docs/json-schema-library-10.png" width="192" alt="@texaryn/json-schema-library">
     <br/>
     json-schema-library
 </h1>
@@ -26,12 +28,12 @@ _json-schema-library_ is the [most compliant JSON Schema validator](https://bowt
 
 **Quick start**
 
-`npm install json-schema-library`
+`npm install @texaryn/json-schema-library`
 
 _json-schema-library_ includes a compileSchema function that converts a JSON Schema into a SchemaNode, which gives you easy-to-use methods for working with the schema.
 
 ```ts
-import { compileSchema, SchemaNode } from "json-schema-library";
+import { compileSchema, SchemaNode } from "@texaryn/json-schema-library";
 import myJsonSchema from "./myJsonSchema.json";
 import myData from "./myData.json";
 
@@ -96,7 +98,7 @@ type CompileOptions = {
 With this
 
 ```ts
-import { compileSchema, draft04, draft06, draft07, draft2019, draft2020 } from "json-schema-library";
+import { compileSchema, draft04, draft06, draft07, draft2019, draft2020 } from "@texaryn/json-schema-library";
 
 // only draft07 is used for all JSON schema
 compileSchema(mySchema, { drafts: [draft07] });
@@ -235,7 +237,7 @@ _json-schema-library_ fully supports all draft versions _draft-04, draft-06, dra
 ---
 
 - Draft support is defined by running a validator against the official [json-schema-test-suite](https://github.com/json-schema-org/JSON-Schema-Test-Suite).
-- _json-schema-library_ passes all tests from [json-schema-test-suite](https://github.com/json-schema-org/JSON-Schema-Test-Suite) which can be inspected in [github actions](https://github.com/sagold/json-schema-library/actions/workflows/ci.yaml)
+- _json-schema-library_ passes all tests from [json-schema-test-suite](https://github.com/json-schema-org/JSON-Schema-Test-Suite) which can be inspected in [github actions](https://github.com/texaryn/json-schema-library/actions/workflows/ci.yaml)
 - To compare _json-schema-library_ to other validators refer to the official [Bowtie Report](https://bowtie.report/#/?language=typescript&language=javascript), which runs a subset of _json-schema-test-suite_ on all registered validators
 
 ---
@@ -252,8 +254,8 @@ All JSON Schema format validators are supported:
 - **add remaining format** validators `hostname`, `idn-email`, `ipv4`, `ipv6`, `uri`, `uri-reference`, `uri-template` to drafts with:
 
 ```ts
-import { addFormats } from "json-schema-library/formats";
-import { draft04, draft06, draft07, draft2019, draft2020 } from "json-schema-library";
+import { addFormats } from "@texaryn/json-schema-library/formats";
+import { draft04, draft06, draft07, draft2019, draft2020 } from "@texaryn/json-schema-library";
 // add additional formats to the following drafts
 addFormats([draft04, draft06, draft07, draft2019, draft2020]);
 ```
@@ -454,7 +456,7 @@ const schemas: SchemaNode[] = schemaNode.getChildSelection("content");
 <details><summary>Example</summary>
 
 ```ts
-import { compileSchema, JsonSchema } from "json-schema-library";
+import { compileSchema, JsonSchema } from "@texaryn/json-schema-library";
 
 const jsonSchema = compileSchema({
   type: "object",
@@ -495,7 +497,7 @@ const myData = compileSchema(myJsonSchema).getData(inputData, { recursionLimit: 
 <details><summary>Example</summary>
 
 ```ts
-import { compileSchema, JsonSchema } from "json-schema-library";
+import { compileSchema, JsonSchema } from "@texaryn/json-schema-library";
 
 const myJsonSchema: JsonSchema = {
   type: "object",
@@ -532,7 +534,7 @@ expect(myData).to.deep.equal({
 <details><summary>Example with input data</summary>
 
 ```ts
-import { compileSchema, JsonSchema } from "json-schema-library";
+import { compileSchema, JsonSchema } from "@texaryn/json-schema-library";
 
 const myJsonSchema: JsonSchema = {
   type: "object",
@@ -573,7 +575,7 @@ expect(myData).to.deep.equal({
 Per default, `getData` does try to create data that is valid to the json-schema. Example: array-schemas with `minItems: 1` will add one item to fullfil the validation criteria. You can use the option and pass `{ extendDefaults: false }` to override this behaviour with a default value:
 
 ```ts
-import { compileSchema } from "json-schema-library";
+import { compileSchema } from "@texaryn/json-schema-library";
 
 const myJsonSchema = {
   type: "array",
@@ -742,7 +744,7 @@ console.log(node?.schema, error); // { type: "number" }, undefined
 <details><summary>Example</summary>
 
 ```ts
-import { compileSchema } from "json-schema-library";
+import { compileSchema } from "@texaryn/json-schema-library";
 
 const mySchema = {
   type: "object",
@@ -841,7 +843,7 @@ console.log(node.schema);
 <details><summary>Example</summary>
 
 ```ts
-import { compileSchema, JsonSchema } from "json-schema-library";
+import { compileSchema, JsonSchema } from "@texaryn/json-schema-library";
 
 const root = compileSchema(mySchema);
 const localSchema: JsonSchema = {
@@ -939,7 +941,7 @@ const nodes: DataNode[] = schemaNode.toDataNodes(myData);
 <details><summary>Example</summary>
 
 ```ts
-import { compileSchema, JsonSchema, JsonPointer } from "json-schema-library";
+import { compileSchema, JsonSchema, JsonPointer } from "@texaryn/json-schema-library";
 
 const mySchema: JsonSchema = {
   type: "array",
@@ -973,7 +975,7 @@ const nodes: SchemaNode[] = compileSchema(mySchema).toSchemaNodes();
 <details><summary>Example</summary>
 
 ```ts
-import { compileSchema, JsonSchema, SchemaNode } from "json-schema-library";
+import { compileSchema, JsonSchema, SchemaNode } from "@texaryn/json-schema-library";
 
 const mySchema: JsonSchema = {
   type: "array",
@@ -1119,7 +1121,7 @@ Per default _json-schema-library_ does not contain async validators, so `errorsA
 <details><summary>Example Async Validation</summary>
 
 ```ts
-import { JsonSchemaValidator, draft2020, sanitizeErrors } from "json-schema-library";
+import { JsonSchemaValidator, draft2020, sanitizeErrors } from "@texaryn/json-schema-library";
 // return Promise<JsonError>
 const customValidator: JsonSchemaValidator = async ({ node, pointer, data }) => {
   return node.createError("type-error", {
@@ -1162,7 +1164,7 @@ Each **draft** describes how a schema should be parsed, validated, and interpret
 Out of the box, the library exports all compliant JSON Schema drafts:
 
 ```ts
-import { draft04, draft06, draft07, draft2019, draft2020 } from "json-schema-library";
+import { draft04, draft06, draft07, draft2019, draft2020 } from "@texaryn/json-schema-library";
 ```
 
 When you compile a schema, the library will automatically select the correct draft based on the `$schema` field — or fall back to the last draft in the list:
@@ -1237,7 +1239,7 @@ You may want to extend a draft when the default JSON Schema behavior does not fi
 Examples:
 
 ```ts
-import { extendDraft, draft2020, oneOfFuzzyKeyword, createCustomError, render, ErrorData } from "json-schema-library";
+import { extendDraft, draft2020, oneOfFuzzyKeyword, createCustomError, render, ErrorData } from "@texaryn/json-schema-library";
 
 const myDraft = extendDraft(draft2020, {
   // Match all $schema
@@ -1295,7 +1297,7 @@ The built-in format validators may not always align with your specific requireme
 <details><summary>Example of overwriting a format validator</summary>
 
 ```ts
-import { extendDraft, draft2020 } from "json-schema-library";
+import { extendDraft, draft2020 } from "@texaryn/json-schema-library";
 
 /**
  * A Regexp that extends http://tools.ietf.org/html/rfc3339#section-5.6 spec.
@@ -1452,7 +1454,7 @@ function reduceType({ node, pointer, data }: JsonSchemaReducerParams): undefined
 Currently **keywords** are not exposed per default. You can still access any keyword implementation by retrieving them from a draft:
 
 ```ts
-import { draft07 } from "json-schema-library";
+import { draft07 } from "@texaryn/json-schema-library";
 const dependentSchemasKeyword = draft2020.keywords.find((f) => f.keyword === "dependentSchemas");
 ```
 
@@ -1485,7 +1487,7 @@ Resolves an object-schema by `propertyName:propertyValue`
 Note that this keyword is not added by default as it is not part yet of the JSONSchema spec. Add this keyword with:
 
 ```ts
-import { compileSchema, draft2020, extendDraft, propertyDependenciesKeyword } from "json-schema-library";
+import { compileSchema, draft2020, extendDraft, propertyDependenciesKeyword } from "@texaryn/json-schema-library";
 
 const draft = extendDraft(draft2020, {
   keywords: [propertyDependenciesKeyword]
@@ -1540,7 +1542,7 @@ If you're working with complex schemas that use the `oneOf` keyword to validate 
 `oneOfFuzzyKeyword` is exposed by _json-schema-library_ and can be used to extend any draft.
 
 ```ts
-import { extendDraft, oneOfFuzzyKeyword, draft2020 } from "json-schema-library";
+import { extendDraft, oneOfFuzzyKeyword, draft2020 } from "@texaryn/json-schema-library";
 
 const myDraft = extendDraft(draft2020, {
   keywords: [oneOfFuzzyKeyword]
@@ -1564,7 +1566,7 @@ const { errors } = compileSchema({
 Per default, a regexFlags `"u"` is used. To change this setting globally, change `REGEX_FLAGS` in settings:
 
 ```ts
-import settings from "json-schema-library";
+import settings from "@texaryn/json-schema-library";
 
 settings.REGEX_FLAGS = "v";
 ```
