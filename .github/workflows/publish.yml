@@ -1,0 +1,43 @@
+name: Publish package
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.34.5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+      - run: npm install --global npm@11
+      - name: Check tag version
+        run: |
+          node --input-type=module -e '
+            import { readFileSync } from "node:fs"
+            const { version } = JSON.parse(readFileSync("package.json", "utf8"))
+            if (process.env.GITHUB_REF_NAME !== `v${version}`) process.exit(1)
+          '
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run lint:src
+      - run: pnpm run lint:types
+      - run: pnpm run test
+      - run: pnpm run test:unit
+      - run: pnpm run dist
+      - run: npm publish --provenance --access public --ignore-scripts
+      - uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ github.ref_name }}
+          generate_release_notes: true

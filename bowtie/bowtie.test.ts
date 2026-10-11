@@ -1,6 +1,6 @@
 import { strict as assert } from "node:assert";
 import { compileSchema } from "../src/compileSchema";
-import { remotes } from "json-schema-library/remotes";
+import { remotes } from "@texaryn/json-schema-library/remotes";
 import { JsonSchema } from "../src/types";
 import { runCommand } from "./bowtie-jlib";
 import { ErrorResponse, RunCmdResponse } from "./bowtie-api";
